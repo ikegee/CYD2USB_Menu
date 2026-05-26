@@ -2,8 +2,7 @@
 
 - A simplified ESP32 Marauder Menu UI clone for ESP32-2432S028R 2.8" Display ESP32 development board, standard 2.8-inch TFT screen and resistor TP, with XPT2046 touch controller (CYD2USB)
 
-![Default Location](screenshots/cyd2usb-menu-1.jpeg "Main Menu") ![Default Location](screenshots/cyd2usb-menu-2.jpeg "Sub Menu") ![Default Location](screenshots/cyd2usb-menu-3
-.jpeg "Sub Menu") ![Default Location](screenshots/cyd2usb-menu-4.jpeg "Sub Menu") ![Default Location](screenshots/cyd2usb-menu-5.jpeg "Sub Menu") ![Default Location](screenshots/cyd2usb-v.jpeg "Sub Menu") 
+![Default Location](screenshots/cyd2usb-menu-1.jpeg "Main Menu") ![Default Location](screenshots/cyd2usb-menu-2.jpeg "Sub Menu") ![Default Location](screenshots/cyd2usb-menu-3.jpeg "Sub Menu") ![Default Location](screenshots/cyd2usb-menu-4.jpeg "Sub Menu") ![Default Location](screenshots/cyd2usb-menu-5.jpeg "Sub Menu") ![Default Location](screenshots/cyd2usb-v.jpeg "Sub Menu") 
 
 
 ## Features
