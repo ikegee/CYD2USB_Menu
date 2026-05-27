@@ -1,9 +1,14 @@
 /* (c) 2026 G.E. Eidsness */
 
-// IMPORTANT: Use the calibration values from TFT_eSPI_User_Setup.txt for the 2.8" TFT display
-// in libdeps folder /TFT_eSPI/User_Setup.h 
+/** 
+ * IMPORTANT: Use the calibration values from attached TFT_eSPI_User_Setup.txt for the 2.8" TFT display configuration. 
+ * These values are critical for accurate touch input mapping for the ESP32-2432S028R XPT2046 touchscreen. 
+ * Incorrect calibration can lead to touch coordinates being misaligned with the display, causing touch interactions to be inaccurate or unresponsive.
+ * The calibration values are typically found in the User_Setup.h file of the TFT_eSPI library.
+*/
 
-// ./src/run_build_monitor.sh 
+// build and monitor script: run_build_monitor.sh
+
 #include <SPI.h>
 #include <TFT_eSPI.h>
 #include <WiFi.h>
