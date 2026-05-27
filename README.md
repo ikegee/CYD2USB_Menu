@@ -9,12 +9,17 @@
 
 - Easy-to-use menu interface with touch screen
 - Simple configuration options for expanding Menu
+- Encapsulated cpp files for customization
 
 ## Requirements
  
  - ESP32-2432S028R 2.8" Display ESP32 development board (CYD2USB)
  - VS Code/PlatformIO
  - C++ compiler (gcc recommended)
+
+ ## Purpose
+
+ - Enable users to easily add menu items and configurations without needing to modify complex code
 
 ## Assumptions
 
