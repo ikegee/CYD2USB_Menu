@@ -1,8 +1,7 @@
-// Replace values in /libdeps/TFT_eSPI/User_Setup.h
-// for ESP32-2432S028R 2.8" Display with XPT2046 Touchscreen
-https://github.com/witnessmenow/ESP32-Cheap-Yellow-Display/blob/main/DisplayConfig/User_Setup.h
-
-For this ESP32 Menu Project
+/**
+* Replace .pio/libdeps/TFT_eSPI/User_Setup.h with values below
+* https://github.com/witnessmenow/ESP32-Cheap-Yellow-Display/blob/main/DisplayConfig/User_Setup.h
+*/
 
 // User Setup for ESP32-CYD TFT Display
 #define USER_SETUP_INFO "User_Setup"
@@ -44,10 +43,10 @@ For this ESP32 Menu Project
 #define TOUCH_MOSI 32  // Touch Screen MOSI (DIN) pin
 
 // Touch screen calibration
-// #define TS_MINX 150
-// #define TS_MINY 500
-// #define TS_MAXX 3800
-// #define TS_MAXY 3900
+#define TS_MINX 150
+#define TS_MINY 600
+#define TS_MAXX 3800
+#define TS_MAXY 3900
 
 // Font options
 #define LOAD_GLCD
