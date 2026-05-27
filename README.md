@@ -18,7 +18,7 @@
 
 ## Assumptions
 
-- Arduino ESP32 Development
+- Arduino ESP32 C++ Development
 
 ## Contributing
 
