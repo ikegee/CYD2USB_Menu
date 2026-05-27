@@ -14,7 +14,7 @@
  
  - ESP32-2432S028R 2.8" Display ESP32 development board (CYD2USB)
  - VS Code/PlatformIO
- - C compiler (gcc recommended)
+ - C++ compiler (gcc recommended)
 
 ## Assumptions
 
