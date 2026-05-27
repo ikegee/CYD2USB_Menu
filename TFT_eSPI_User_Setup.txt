@@ -1,4 +1,5 @@
 /**
+* !!! IMPORTANT !!!
 * Replace .pio/libdeps/TFT_eSPI/User_Setup.h with values below
 * https://github.com/witnessmenow/ESP32-Cheap-Yellow-Display/blob/main/DisplayConfig/User_Setup.h
 */
