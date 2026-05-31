@@ -2,6 +2,7 @@
 #define WIFI_SCREEN_H
 
 #include "back_link.h"
+#include "coming_soon.h"
 #include "screen_manager.h"
 #include "screen_states.h"
 #include "sub_header.h"
@@ -15,6 +16,7 @@ class WiFiScreen : public Screen {
   BackLink* backLink;
   LinkGroup* wifiLinks;
   WiFiScreenState wifiState;
+  ComingSoon comingSoon;  // Add ComingSoon instance
 
  public:
   WiFiScreen(TFT_eSPI* tft, Header* header)
@@ -22,7 +24,8 @@ class WiFiScreen : public Screen {
         subHeader(tft),
         backLink(nullptr),
         wifiLinks(nullptr),
-        wifiState(WIFI_MAIN) {}
+        wifiState(WIFI_MAIN),
+        comingSoon(tft) {}
 
   ~WiFiScreen() { cleanup(); }
 
@@ -38,57 +41,40 @@ class WiFiScreen : public Screen {
     backLink->draw();
 
     switch (wifiState) {
-      case WIFI_MAIN: {
-      // Draw main WiFi screen
-      subHeader.draw(ITEM_WIFI);
+      case WIFI_MAIN:
+        // Draw main WiFi screen
+        subHeader.draw(ITEM_WIFI);
 
-      // Create WiFi links if they don't exist
-      if (wifiLinks == nullptr) {
-        wifiLinks = new LinkGroup(tft, 20, 100, 4);
-        wifiLinks->addLink("WiFi Settings", SCREEN_WIFI_SETTINGS);
-        wifiLinks->addLink("WiFi Scanner", SCREEN_WIFI_SCANNER);
-        wifiLinks->addLink("Connect to WiFi", SCREEN_WIFI_CONNECT);
-      }
-      wifiLinks->draw();
+        // Create WiFi links if they don't exist
+        if (wifiLinks == nullptr) {
+          wifiLinks = new LinkGroup(tft, 20, 100, 4);
+          wifiLinks->addLink("WiFi Settings", SCREEN_WIFI_SETTINGS);
+          wifiLinks->addLink("WiFi Scanner", SCREEN_WIFI_SCANNER);
+          wifiLinks->addLink("Connect to WiFi", SCREEN_WIFI_CONNECT);
+        }
+        wifiLinks->draw();
         break;
-      }
-      case WIFI_SETTINGS: {
-      // Draw WiFi settings screen
-      subHeader.draw(SUB_TITLE_WIFI_SETTINGS);
 
-      // Draw WiFi settings content
-      tft->setTextColor(TFT_WHITE);
-      tft->setTextSize(2);
-      tft->setCursor(20, 100);
-      tft->println("Coming soon...");
+      case WIFI_SETTINGS:
+        subHeader.draw(SUB_TITLE_WIFI_SETTINGS);
+        comingSoon.draw();  
         break;
-      }
-      case WIFI_SCANNER: {
-      // Draw WiFi scanner screen
-      subHeader.draw(SUB_TITLE_WIFI_SCANNER);
 
-      // Draw WiFi scanner content
-      tft->setTextColor(TFT_WHITE);
-      tft->setTextSize(2);
-      tft->setCursor(20, 100);
-      tft->println("Coming soon...");
+      case WIFI_SCANNER:
+        subHeader.draw(SUB_TITLE_WIFI_SCANNER);
+        comingSoon.draw(); 
         break;
-      }
-      case WIFI_CONNECT: {
-      // Draw WiFi connect screen
-      subHeader.draw(SUB_TITLE_WIFI_CONNECT);
 
-      // Draw WiFi connect content
-      tft->setTextColor(TFT_WHITE);
-      tft->setTextSize(2);
-      tft->setCursor(20, 100);
-      tft->println("Coming soon...");
+      case WIFI_CONNECT:
+        subHeader.draw(SUB_TITLE_WIFI_CONNECT);
+        comingSoon.draw();  
         break;
-    }
+
       default:
         // Handle unexpected state (optional, for robustness)
+        Serial.println("WiFiScreen::draw: Unexpected wifiState=" + String(wifiState));
         break;
-  }
+    }
 
     // Update screen state
     currentScreen = WIFI_SCREEN_STATE;
@@ -157,4 +143,3 @@ class WiFiScreen : public Screen {
 };
 
 #endif  // WIFI_SCREEN_H
-

@@ -6,6 +6,7 @@
 #include "screen_states.h"
 #include "sub_header.h"
 #include "text_link.h"
+#include "coming_soon.h"
 
 enum BluetoothScreenState {  BLUETOOTH_MAIN, BLUETOOTH_SETTINGS, BLUETOOTH_SCANNER, BLUETOOTH_CONNECT};
 
@@ -15,6 +16,7 @@ class BluetoothScreen : public Screen {
   BackLink* backLink;
   LinkGroup* bluetoothLinks;
   BluetoothScreenState btState;
+  ComingSoon comingSoon;  // Add ComingSoon instance
 
  public:
   BluetoothScreen(TFT_eSPI* tft, Header* header)
@@ -22,7 +24,8 @@ class BluetoothScreen : public Screen {
         subHeader(tft),
         backLink(nullptr),
         bluetoothLinks(nullptr),
-        btState(BLUETOOTH_MAIN) {}
+        btState(BLUETOOTH_MAIN),
+        comingSoon(tft) {}
 
   ~BluetoothScreen() { cleanup(); }
 
@@ -51,39 +54,25 @@ class BluetoothScreen : public Screen {
           }
         bluetoothLinks->draw();
         break;
-        case BLUETOOTH_SETTINGS:
-        // Draw Bluetooth Settings screen
+      
+      case BLUETOOTH_SETTINGS:
         subHeader.draw(SUB_TITLE_BLUETOOTH_SETTINGS);
-
-        // Draw Bluetooth Settings content
-        tft->setTextColor(TFT_WHITE);
-        tft->setTextSize(2);
-        tft->setCursor(20, 100);
-        tft->println("Coming soon...");
+        comingSoon.draw();  
         break;
         
-        case BLUETOOTH_SCANNER:
-        // Draw Bluetooth Scanner screen
+      case BLUETOOTH_SCANNER:
         subHeader.draw(SUB_TITLE_BLUETOOTH_SCANNER);
-
-        // Draw Bluetooth Scanner content
-        tft->setTextColor(TFT_WHITE);
-        tft->setTextSize(2);
-        tft->setCursor(20, 100);
-        tft->println("Coming soon...");
+        comingSoon.draw();  
         break;
+        
       case BLUETOOTH_CONNECT:
-        // Draw Bluetooth Connect screen
         subHeader.draw(SUB_TITLE_BLUETOOTH_CONNECT);
-
-        // Draw Bluetooth Connect content
-        tft->setTextColor(TFT_WHITE);
-        tft->setTextSize(2);
-        tft->setCursor(20, 100);
-        tft->println("Coming soon...");
+        comingSoon.draw();  
         break;
-    
-
+      
+      default:
+        Serial.println("BluetoothScreen::draw: Unexpected btState=" + String(btState));
+        break;
     }
 
     // Update screen state
